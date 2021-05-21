@@ -8,7 +8,7 @@ from prometheus_client import start_http_server
 
 REQUEST = 'select now()-pg_last_xact_replay_timestamp() as replication_lag;'
 CONNECT_STRING = os.environ.get("CONNECT_STRING")
-DISABLE_DEFAULT_METRICS = os.environ.get("DISABLE_DEFAULT_METRICS")
+DISABLE_DEFAULT_METRICS = "True"
 
 # Clearing url and selecting a slave node
 
@@ -29,7 +29,7 @@ def clear_url(conn_string):
         jdbc_pattern).findall(conn_string)[0]
 
     clear_conn_sring = 'postgresql://' + j_host + ':' + j_port + '/' + \
-        j_dbname + '?user=' + j_username + '&password=' + j_password + '&ssl=true'
+        j_dbname + '?user=' + j_username + '&password=' + j_password
 
     return clear_conn_sring
 
