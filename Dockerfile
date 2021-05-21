@@ -12,4 +12,6 @@ COPY app.py ./
 
 ENV CONNECT_STRING='your_string_for_connect_to_postgres_slave'
 
+EXPOSE 9099
+
 CMD [ "python3", "app.py" ]
